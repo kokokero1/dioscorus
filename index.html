@@ -1,30 +1,27 @@
-<!DOCTYPE html>
 <html>
 <head>
 <script>
-function showHint() {
-  
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-       document.getElementById("txtHint").innerHTML = this.responseText;
-      }
+function getVote(int) {
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("poll").innerHTML=this.responseText;
     }
-    xmlhttp.open("GET", "http://dioscorus.rf.gd/index.php", true);
-    xmlhttp.send();
   }
-
+  xmlhttp.open("GET","http://dioscorus.rf.gd/index.php?vote="+int,true);
+  xmlhttp.send();
+}
 </script>
 </head>
 <body>
-
-<p><b>Start typing a name in the input field below:</b></p>
-<form action="">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname" onkeyup="showHint()">
+  
+    <div id="poll">
+<h3>Do you like PHP and AJAX so far?</h3>
+<form>
+Yes: <input type="radio" name="vote" value="0" onclick="getVote(this.value)"><br>
+No: <input type="radio" name="vote" value="1" onclick="getVote(this.value)">
 </form>
-  <button onclick="showHint()">koko</button>
-<p>Suggestions: <span id="txtHint"></span></p>
-
+</div>
+<button onclick="showHint()">koko</button>
 </body>
 </html>
