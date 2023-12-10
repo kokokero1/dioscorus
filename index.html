@@ -8,7 +8,7 @@ function getVote(int) {
       document.getElementById("poll").innerHTML=this.responseText;
     }
   }
-  xmlhttp.open("GET","online.html?"+int,true);
+  xmlhttp.open("GET","http://dioscorus.rf.gd/index.php?vote="+int,true);
   xmlhttp.send();
 }
 </script>
